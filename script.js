@@ -2,18 +2,21 @@
 // To make messages shared across all visitors, connect this to a real backend later.
 import { createClient } from '@supabase/supabase-js'
 
-const supabaseUrl = 'https://ckzcugyesnrnifkpixaq.supabase.co/rest/v1/'
+const supabaseUrl = 'https://ckzcugyesnrnifkpixaq.supabase.co'
 const supabaseKey = 'sb_publishable_-jpXC38JuoUTnL5b8BbxHg_HsdIPzq6'
 
 const supabase = createClient(supabaseUrl, supabaseKey)
 const STORAGE_KEY = "acfw.messages.v1";
-//Test Connection
-async function testConnection() {const { data, error } = await supabase
-  .from('feedback')
-  .select('*')
 
-console.log(data)
-console.log(error)
+// Test Supabase connection
+async function testConnection() {
+  const { data, error } = await supabase
+    .from('feedback')
+    .select('*')
+    .limit(1)
+
+  console.log('Supabase connection test:', { data, error })
+}
 
 const form = document.getElementById("feedback-form");
 const messageEl = document.getElementById("message");
@@ -135,3 +138,4 @@ clearAllBtn.addEventListener("click", () => {
 
 // Initial paint
 render();
+testConnection();
