@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -64,68 +64,3 @@
 </body>
 </html>
 =======
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Anonymous Class Feedback Wall</title>
-  <link rel="stylesheet" href="styles.css"/>
-</head>
-<body>
-  <header class="container">
-    <h1>Anonymous Class Feedback Wall</h1>
-    <p class="tagline">
-      A place for students to share thoughts or suggestions about class — no names needed. 
-      Help improve communication between students and teachers in a safe way.
-    </p>
-  </header>
-
-  <main class="container">
-    <section class="card" aria-labelledby="share-title">
-      <h2 id="share-title">Share your feedback</h2>
-      <form id="feedback-form">
-        <textarea id="message" name="message" rows="4" maxlength="500" placeholder="Write your feedback here..." required></textarea>
-        <div class="form-row">
-          <span id="char-count">0 / 500</span>
-          <button type="submit" class="btn">Post Anonymously</button>
-        </div>
-      </form>
-      <p class="hint">Note: Messages are stored in your browser only. To make them visible for everyone, you’d need a shared database.</p>
-    </section>
-
-    <section class="card" aria-labelledby="wall-title">
-      <h2 id="wall-title">Feedback Wall</h2>
-      <div id="filters" class="filters">
-        <input id="search" type="search" placeholder="Search feedback..."/>
-        <select id="sort">
-          <option value="newest">Newest first</option>
-          <option value="oldest">Oldest first</option>
-        </select>
-        <button id="clear-all" class="btn btn-ghost" type="button">Clear All (local)</button>
-      </div>
-      <ul id="wall" class="wall" aria-live="polite"></ul>
-      <template id="item-template">
-        <li class="item">
-          <div class="item-top">
-            <span class="badge">Anonymous</span>
-            <time class="time"></time>
-          </div>
-          <p class="text"></p>
-          <div class="item-actions">
-            <button class="like btn-ghost" type="button" aria-label="Like">❤️ <span class="like-count">0</span></button>
-            <button class="delete btn-ghost" type="button" aria-label="Delete">Delete</button>
-          </div>
-        </li>
-      </template>
-    </section>
-  </main>
-
-  <footer class="container footer">
-    <small>Built for constructive, respectful feedback. Be kind.</small>
-  </footer>
-
-  <script src="script.js" defer></script>
-</body>
-</html>
->>>>>>> 2613334619a65aacc84d14b6c2d5b30838d3e933
