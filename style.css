@@ -133,7 +133,7 @@ h2 {
 
 .btn {
   background: linear-gradient(135deg, var(--accent), var(--accent-2), var(--accent-3));
-  color: white;
+  color: rgba(2, 162, 16, 0.668);
   border: none;
   padding: 12px 16px;
   border-radius: 16px;
