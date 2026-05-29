@@ -1,4 +1,11 @@
 
+.top-image{
+  position:absolute;
+  top:15px;
+  left:15px;
+  width:80px;
+  border-radius:10px;
+}
 :root {
   --bg: #0f172a;        /* slate-900 */
   --panel: #111827;     /* gray-900 */
