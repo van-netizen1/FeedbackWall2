@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 :root {
   --bg: #0f172a;        /* slate-900 */
   --panel: #111827;     /* gray-900 */
@@ -187,7 +187,6 @@ h2 {
 @media (max-width: 520px) {
   header h1 { font-size: 1.65rem; }
 }
-=======
 :root {
   --bg: #0f172a;        /* slate-900 */
   --panel: #111827;     /* gray-900 */
@@ -376,4 +375,3 @@ h2 {
 @media (max-width: 520px) {
   header h1 { font-size: 1.65rem; }
 }
->>>>>>> 2613334619a65aacc84d14b6c2d5b30838d3e933
