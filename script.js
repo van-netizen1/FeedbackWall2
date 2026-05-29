@@ -26,6 +26,16 @@ const itemTpl = document.getElementById("item-template");
 const searchEl = document.getElementById("search");
 const sortEl = document.getElementById("sort");
 const clearAllBtn = document.getElementById("clear-all");
+const adminForm = document.getElementById("admin-form");
+const adminCode = document.getElementById("admin-code");
+const adminStatus = document.getElementById("admin-status");
+const adminPanel = document.getElementById("admin-panel");
+const adminWall = document.getElementById("admin-wall");
+const adminRefreshBtn = document.getElementById("admin-refresh");
+const adminLogoutBtn = document.getElementById("admin-logout");
+
+const ADMIN_PASSWORD = "PLSP2026";
+let adminLoggedIn = false;
 
 function uid() {
   return Math.random().toString(36).slice(2) + Date.now().toString(36);
@@ -57,6 +67,55 @@ function formatTime(iso) {
 }
 
 let state = load();
+
+function setAdminMode(loggedIn) {
+  adminLoggedIn = loggedIn;
+  adminPanel.classList.toggle("admin-hidden", !loggedIn);
+  adminStatus.textContent = loggedIn
+    ? "Admin access granted. Showing shared feedback from the database."
+    : "Admin can log in to view all shared feedback from the database.";
+  if (!loggedIn) {
+    adminCode.value = "";
+    adminWall.innerHTML = "";
+  }
+}
+
+async function loadAdminFeedback() {
+  if (!adminLoggedIn) return;
+
+  adminStatus.textContent = "Loading admin feedback…";
+  const { data, error } = await supabase
+    .from("feedback")
+    .select("id, text, likes, createdAt")
+    .order("createdAt", { ascending: false });
+
+  if (error) {
+    adminStatus.textContent = `Unable to fetch admin feedback: ${error.message}`;
+    adminWall.innerHTML = "";
+    return;
+  }
+
+  adminStatus.textContent = `Admin view: ${data.length} feedback items loaded.`;
+  adminWall.innerHTML = "";
+
+  if (data.length === 0) {
+    const li = document.createElement("li");
+    li.className = "item";
+    li.innerHTML = `<p class="text" style="margin:0">No feedback found in the shared database.</p>`;
+    adminWall.appendChild(li);
+    return;
+  }
+
+  for (const item of data) {
+    const li = itemTpl.content.cloneNode(true);
+    li.querySelector(".time").textContent = formatTime(item.createdAt);
+    li.querySelector(".text").textContent = item.text;
+    li.querySelector(".like-count").textContent = String(item.likes || 0);
+    li.querySelector(".delete").remove();
+    li.querySelector(".like").remove();
+    adminWall.appendChild(li);
+  }
+}
 
 function render() {
   const q = (searchEl.value || "").trim().toLowerCase();

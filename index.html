@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Anonymous Class Feedback Wall</title>
-  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
     <img src="plsp.jpg" class="top-image" alt="Logo">
@@ -27,6 +27,24 @@
         </div>
       </form>
       <p class="hint"></p>
+    </section>
+
+    <section class="card admin-panel" aria-labelledby="admin-title">
+      <h2 id="admin-title">Admin access</h2>
+      <form id="admin-form">
+        <div class="form-row">
+          <input id="admin-code" type="password" placeholder="Admin passcode" />
+          <button type="submit" class="btn">Admin login</button>
+        </div>
+      </form>
+      <p id="admin-status" class="hint">Admin can log in to view all shared feedback from the database.</p>
+      <div id="admin-panel" class="admin-hidden">
+        <div class="form-row">
+          <button id="admin-refresh" class="btn btn-ghost" type="button">Refresh feedback</button>
+          <button id="admin-logout" class="btn btn-ghost" type="button">Logout</button>
+        </div>
+        <ul id="admin-wall" class="wall" aria-live="polite"></ul>
+      </div>
     </section>
 
     <section class="card" aria-labelledby="wall-title">

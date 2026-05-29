@@ -173,12 +173,17 @@ h2 {
 }
 
 .filters input[type="search"],
-.filters select {
+.filters select,
+.admin-panel input[type="password"] {
   background: rgba(8, 18, 36, 0.95);
   color: var(--text);
   border: 1px solid rgba(148,163,184,0.18);
   border-radius: 14px;
   padding: 10px 12px;
+}
+
+.admin-hidden {
+  display: none;
 }
 
 .wall {
