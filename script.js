@@ -162,37 +162,33 @@ function render() {
   }
 }
 
-form.addEventListener("submit", (e) => {
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
+
   const text = messageEl.value.trim();
   if (!text) return;
 
-  state.push({
-    id: uid(),
-    text,
-    likes: 0,
-    createdAt: nowISO()
-  });
+  const { data, error } = await supabase
+    .from("feedback")
+    .insert([
+      {
+        text: text,
+        likes: 0,
+        createdAt: new Date().toISOString()
+      }
+    ]);
 
-  save(state);
+  if (error) {
+    console.error("Insert error:", error);
+    alert(error.message);
+    return;
+  }
+
   messageEl.value = "";
   charCount.textContent = "0 / 500";
-  render();
-});
 
-messageEl.addEventListener("input", () => {
-  charCount.textContent = `${messageEl.value.length} / 500`;
-});
-
-searchEl.addEventListener("input", render);
-sortEl.addEventListener("change", render);
-
-clearAllBtn.addEventListener("click", () => {
-  if (confirm("This clears messages stored in your browser only. Continue?")) {
-    state = [];
-    save(state);
-    render();
-  }
+  console.log("Inserted:", data);
+  alert("Feedback submitted!");
 });
 
 // Initial paint
