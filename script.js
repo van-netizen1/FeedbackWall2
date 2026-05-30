@@ -1,7 +1,7 @@
 // Simple anonymous wall using browser localStorage (no server).
 // To make messages shared across all visitors, connect this to a real backend later.
-import { createClient } from '@supabase/supabase-js'
-
+import { createClient } from "https://esm.sh/@supabase/supabase-js";
+import { create } from 'zustand'
 const supabaseUrl = 'https://ckzcugyesnrnifkpixaq.supabase.co'
 const supabaseKey = 'sb_publishable_-jpXC38JuoUTnL5b8BbxHg_HsdIPzq6'
 
