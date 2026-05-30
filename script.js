@@ -87,8 +87,21 @@ async function loadAdminFeedback() {
   const { data, error } = await supabase
     .from("feedback")
     .select("id, text, likes, createdAt")
-    .order("createdAt", { ascending: false });
+    .order("createdAt", { ascending: true });
+    
+async function submitFeedback() {
+  const { data, error } = await supabase
+    .from("feedback")
+    .insert([
+      {
+        text: text,
+        likes: 0,
+        createdAt: new Date().toISOString()
+      }
+    ]);
 
+  console.log(data, error);
+}
   if (error) {
     adminStatus.textContent = `Unable to fetch admin feedback: ${error.message}`;
     adminWall.innerHTML = "";
