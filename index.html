@@ -37,13 +37,13 @@
           <button type="submit" class="btn">Admin login</button>
         </div>
       </form>
-      <p id="admin-status" class="hint">Admin can log in to view all shared feedback from the database.</p>
+      <p id="admin-status" class="hint">Admin can log in to review feedback.</p>
       <div id="admin-panel" class="admin-hidden">
         <div class="form-row">
           <button id="admin-refresh" class="btn btn-ghost" type="button">Refresh feedback</button>
           <button id="admin-logout" class="btn btn-ghost" type="button">Logout</button>
         </div>
-        <ul id="admin-wall" class="wall" aria-live="polite"></ul>
+        <p class="hint">Once logged in, admin can review all feedback in the wall below.</p>
       </div>
     </section>
 
@@ -78,9 +78,7 @@
     <small>Built for constructive, respectful feedback. Be kind.</small>
   </footer>
 
-  <script type="module">
-import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
-</script>
+  <script type="module" src="script.js"></script>
 </body>
 </html>
 
